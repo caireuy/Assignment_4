@@ -18,3 +18,7 @@ I will be using try-except block to validate a data to ensure all programs are c
 ## Code Modification
 
 Implemented try-exception to present error messages in a clearer manner
+
+## Code Modification
+
+Modified Inalid Records placeholder to collect errors logged correctly
