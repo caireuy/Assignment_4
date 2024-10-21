@@ -1,8 +1,8 @@
 """
 Description: A program that reads through transaction records and reports the results.
 Author: ACE Faculty
-Edited by: Carey Roxas
-Date: October 20, 2024
+Edited by: {Student Name}
+Date: {Date}
 Usage: This program will read transaction data from a .csv file, summarize and 
 report the results.
 """
@@ -21,8 +21,9 @@ error_message = ''
 os.system('cls' if os.name == 'nt' else 'clear')
 
 
-with open('bank_data.csv', 'r') as csv_file:
-    reader = csv.reader(csv_file)
+try:
+    with open('bank_data.csv', 'r') as csv_file:
+        reader = csv.reader(csv_file)
     for row in reader:
         # Reset valid record and error message for each iteration
         valid_record = True
@@ -55,16 +56,16 @@ with open('bank_data.csv', 'r') as csv_file:
                 total_transaction_amount += transaction_amount
             
             # Record  transactions in the customer's transaction history
-            customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))
-        
+            customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))          
+
         ### COLLECT INVALID RECORDS ###
         
 
 
-print("PiXELL River Transaction Report\n===============================\n")
+    print("PiXELL River Transaction Report\n===============================\n")
 # Print the final account balances for each customer
-for customer_id, data in customer_data.items():
-    balance = data['balance']
+    for customer_id, data in customer_data.items():
+        balance = data['balance']
 
     print(f"\nCustomer {customer_id} has a balance of {balance}.")
     # Print the transaction history for the customer
@@ -73,8 +74,14 @@ for customer_id, data in customer_data.items():
         amount, type = transaction
         print(f"\t{type.capitalize()}: {amount}")
 
-print(f"\nAVERAGE TRANSACTION AMOUNT: {(total_transaction_amount / transaction_counter)}")
+    print(f"\nAVERAGE TRANSACTION AMOUNT: {(total_transaction_amount / transaction_counter)}")
 
-print("\nREJECTED RECORDS\n================")
-for record in rejected_records:
-    print("REJECTED:", record)
+    print("\nREJECTED RECORDS\n================")
+    for record in rejected_records:
+        print("REJECTED:", record)
+
+except FileNotFoundError as e:
+    print("ERROR: File does not exist",e )
+except Exception as e:
+    print("ERROR: General exception", e)
+
