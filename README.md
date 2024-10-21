@@ -39,5 +39,11 @@ and added a variable 'average_amount = total_transaction_amount / transaction_co
 ## Code Modification modified
 Change transaction_counter to transaction_count to calculate average transaction amount with all valid transactions
 
+## Code Modification modified
+Modified 'withdraw' transaction amount from '+=' to '-+' to subtract transaction amount for withdraw
+
+## Code Modification modified
+
+Modified intendetion from if valid_record to else
 
 

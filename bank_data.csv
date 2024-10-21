@@ -1,3 +1,4 @@
 ﻿CustomerId,TransactionType,TransactionAmount
 A123,deposit,10000
 A224,deposit,5000
+A232,deposit,20200

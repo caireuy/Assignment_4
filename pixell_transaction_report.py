@@ -57,21 +57,21 @@ try:
                     customer_data[customer_id] = {'balance': 0, 'transactions': []}
 
             # Update the customer's account balance based on the transaction type
-            if transaction_type == 'deposit':
-                customer_data[customer_id]['balance'] += transaction_amount
+                if transaction_type == 'deposit':
+                    customer_data[customer_id]['balance'] += transaction_amount
+                    transaction_count += 1
+                    total_transaction_amount += transaction_amount
+                elif transaction_type == 'withdraw':
+                    customer_data[customer_id]['balance'] -= transaction_amount   
+                    
                 transaction_count += 1
                 total_transaction_amount += transaction_amount
-            elif transaction_type == 'withdraw':
-                customer_data[customer_id]['balance'] += transaction_amount
-                transaction_count += 1
-              
-                total_transaction_amount += transaction_amount
-            
+
             # Record  transactions in the customer's transaction history
-            customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))   
+                customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))   
             ### COLLECT INVALID RECORDS ###   
-        else:
-            rejected_records.append((row, error_message))   
+            else:
+                rejected_records.append((row, error_message))   
 
 except FileNotFoundError as e:
     print("ERROR: File does not exist",e )
@@ -83,14 +83,13 @@ except Exception as e:
 print("PiXELL River Transaction Report\n===============================\n")
 # Print the final account balances for each customer
 for customer_id, data in customer_data.items():
-        balance = data['balance']
-        print(f"\nCustomer {customer_id} has a balance of ${balance:,.2f}.")
+    balance = data['balance']
+    print(f"\nCustomer {customer_id} has a balance of ${balance:,.2f}.")
     # Print the transaction history for the customer
-        print("Transaction History:")
-
-        for transaction in data['transactions']:
-            amount, type = transaction
-            print(f"\t{type.capitalize()}: ${amount:,.2f}")
+    print("Transaction History:")
+    for transaction in data['transactions']:
+        amount, type = transaction
+        print(f"\t{type.capitalize()}: ${amount:,.2f}")
 
 if transaction_count > 0:
     average_amount = total_transaction_amount / transaction_count
