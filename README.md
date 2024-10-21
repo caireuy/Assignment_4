@@ -21,4 +21,20 @@ Implemented try-exception to present error messages in a clearer manner
 
 ## Code Modification
 
-Modified Inalid Records placeholder to collect errors logged correctly
+Modified Invalid Records placeholder to collect errors logged correctly
+
+## Code Modification
+
+Modified indentation on the with block to read the program
+
+## Code Modification modified
+
+Modified the spelling of 'withdrawal' in the transaction_type as 'withdraw' to be able to read the transaction type
+
+## Code Modification modified
+
+Modified the average amount of transaction by adding "> 0' to avoid division by zero
+and added a variable 'average_amount = total_transaction_amount / transaction_counter' to calculate the average transaction amount
+
+
+
