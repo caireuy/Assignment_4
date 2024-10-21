@@ -62,14 +62,11 @@ try:
                 total_transaction_amount += transaction_amount
             
             # Record  transactions in the customer's transaction history
-            customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))          
-
-        ### COLLECT INVALID RECORDS ###
-        
-except FileNotFoundError as e:
-    print("ERROR: File does not exist",e )
-except Exception as e:
-    print("ERROR: General exception", e)
+            customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))   
+            ### COLLECT INVALID RECORDS ###   
+        else:
+            rejected_records.append((row, error_message))   
+                   
 
 
     print("PiXELL River Transaction Report\n===============================\n")
@@ -89,5 +86,10 @@ except Exception as e:
     print("\nREJECTED RECORDS\n================")
     for record in rejected_records:
         print("REJECTED:", record)
+        
+except FileNotFoundError as e:
+    print("ERROR: File does not exist",e )
+except Exception as e:
+    print("ERROR: General exception", e)         
 
 
