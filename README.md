@@ -36,5 +36,8 @@ Modified the spelling of 'withdrawal' in the transaction_type as 'withdraw' to b
 Modified the average amount of transaction by adding "> 0' to avoid division by zero
 and added a variable 'average_amount = total_transaction_amount / transaction_counter' to calculate the average transaction amount
 
+## Code Modification modified
+Change transaction_counter to transaction_count to calculate average transaction amount with all valid transactions
+
 
 
